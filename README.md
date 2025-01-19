@@ -1,3 +1,8 @@
 # Rust Practice
 
-Learing how to use rust
+Learning how to use rust
+
+Includes:
+  1. Hello world
+  2. Reverse text
+  3. Linked list
