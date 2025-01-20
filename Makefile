@@ -1,7 +1,7 @@
 .PHONY: all install update check clean
 
 # Default target
-setup_rust: install_rust update_rust check_rust
+setup_rust: install_rust cargo_tools update_rust check_rust
 
 # Install Rust and core components
 install_rust:
@@ -29,7 +29,7 @@ cargo_tools:
 	# # @echo "    source \"$$HOME/.cargo/env\""
 	# # @echo "Or add this line to your shell's config file"
 	# @bash -c source 'PATH="$$HOME/.cargo/env"'
-	
+
 	@echo "Installing cargo tools..."
 	@bash -c 'source $$HOME/.cargo/env && \
 		cargo install cargo-edit && \
