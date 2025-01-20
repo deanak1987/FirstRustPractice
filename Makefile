@@ -19,6 +19,32 @@ install_rust:
 	@echo "Rust installation complete!"
 	@echo "NOTE: Please restart your shell or run: export PATH=\"$$HOME/.cargo/bin:$$PATH\""
 
+cargo_tools:
+	# @echo "Installing cargo tools..."
+	# @bash -c 'source $$HOME/.cargo/env && \
+	# 	cargo install cargo-edit && \
+	# 	cargo install cargo-watch'
+	# @echo "Tools installation complete!"
+	# # @echo "To use Rust in new terminals, please run:"
+	# # @echo "    source \"$$HOME/.cargo/env\""
+	# # @echo "Or add this line to your shell's config file"
+	# @bash -c source 'PATH="$$HOME/.cargo/env"'
+	
+	@echo "Installing cargo tools..."
+	@bash -c 'source $$HOME/.cargo/env && \
+		cargo install cargo-edit && \
+		cargo install cargo-watch'
+	@echo "Tools installation complete!"
+	@echo "Adding Rust to your shell configuration..."
+	@if ! grep -q 'source "$$HOME/.cargo/env"' $$HOME/.bashrc; then \
+		echo 'source "$$HOME/.cargo/env"' >> $$HOME/.bashrc && \
+		echo "Rust environment added to ~/.bashrc"; \
+	else \
+		echo "Rust environment already configured in ~/.bashrc"; \
+	fi
+	@echo "To apply changes, restart your terminal or run:"
+	@echo "    source $$HOME/.bashrc"
+
 # Update Rust and all installed components
 update_rust:
 	@echo "Updating Rust..."
