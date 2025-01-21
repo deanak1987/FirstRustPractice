@@ -59,3 +59,29 @@ clean_rust:
 	@echo "Cleaning up Rust installation..."
 	@rustup self uninstall -y
 	@echo "Cleanup complete!"
+
+# Run all linting checks
+lint: fmt clippy
+
+# Format code using rustfmt
+fmt:
+	@echo "Checking for Rust files..."
+	@if [ -f "Cargo.toml" ]; then \
+		echo "Formatting code..." && \
+		bash -c 'source $$HOME/.cargo/env && cargo fmt --all'; \
+	else \
+		echo "No Cargo.toml found. Please run 'cargo init' or 'cargo new' first."; \
+		exit 0; \
+	fi
+
+# Run clippy lints
+clippy:
+	@echo "Checking for Rust files..."
+	@if [ -f "Cargo.toml" ]; then \
+		echo "Running clippy..." && \
+		bash -c 'source $$HOME/.cargo/env && cargo clippy --all-targets --all-features -- -D warnings'; \
+	else \
+		echo "No Cargo.toml found. Please run 'cargo init' or 'cargo new' first."; \
+		exit 0; \
+	fi
+

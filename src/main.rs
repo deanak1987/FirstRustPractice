@@ -6,17 +6,9 @@ fn reverse_string(input: &str) -> String {
     input.chars().rev().collect()
 }
 
-// fn main() {
-//     let original = String::from("Hello, Rust!");
-//     let reversed = reverse_string(&original);
-//     println!("Original: {}", original);
-//     println!("Reversed: {}", reversed);
-// }
-
-
-use std::rc::Rc;
 use std::cell::RefCell;
 use std::fmt::Display;
+use std::rc::Rc;
 
 // Define a Node with a value and a pointer to the next Node
 #[derive(Debug)]
@@ -47,27 +39,6 @@ impl<T: Display> LinkedList<T> {
         self.head = Some(new_node);
     }
 
-    // Add an element to the end of the list
-    // fn postpend(&mut self, value: T) {
-    //     let new_node = Rc::new(RefCell::new(Node { value, next: None }));
-    //     match self.head {
-    //         Some(ref head) => {
-    //             let mut current = Rc::clone(head);
-    //             while let Some(next) = current.borrow().next.clone() {
-    //                 // Assign `next` to a temporary variable and let the borrow end
-    //                 current = next;
-    //             }
-    //             // Mutably borrow the last node and update its `next` pointer
-    //             current.borrow_mut().next = Some(new_node);
-    //         }
-    //         None => {
-    //             // If the list is empty, the new node becomes the head
-    //             self.head = Some(new_node);
-    //         }
-    //     }
-    // }
-
-
     // Print all the elements of the list
     fn print_list(&self) {
         let mut current = self.head.clone();
@@ -80,13 +51,17 @@ impl<T: Display> LinkedList<T> {
 }
 
 fn main() {
+    println!("### Run a Hello, World Function ###");
     println!("{}", hello());
 
+    println!("\n### Reverse Text ###");
     let original = String::from("Hello, Rust!");
     let reversed = reverse_string(&original);
     println!("Original: {}", original);
     println!("Reversed: {}", reversed);
 
+
+    println!("\n### Make Linked List from Scratch ###");
     // Create a new linked list
     let mut list = LinkedList::new();
 
