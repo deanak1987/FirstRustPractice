@@ -60,6 +60,17 @@ fn main() {
     println!("Original: {}", original);
     println!("Reversed: {}", reversed);
 
+    println!("\n### Create Vector and Add to it ###");
+    let mut numbers = vec![];
+    numbers.push(1);
+    numbers.push(2);
+    println!("{:?}", numbers);
+
+    println!("\n### Use For Loop with Vector and steps of 2");
+    for i in (3..=9).step_by(2) {
+        numbers.push(i);
+    }
+    println!("{:?}", numbers);
 
     println!("\n### Make Linked List from Scratch ###");
     // Create a new linked list
